@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <myheader></myheader>
+    <myheader :poiInfo="poiInfo"></myheader>
 
     <mynav></mynav>
     <!-- 路由出口 -->
@@ -29,6 +29,24 @@ export default {
       //header组件需要的商家信息
       poiInfo:{}
     }
+  },
+  created(){
+    var that=this;
+    // Make a request for a user with a given ID
+    this.$axios.get('/api/goods')
+      .then(function (response) {
+        //console.log(response);
+        var dataSource = response.data;
+        //console.log(dataSource)
+        if(dataSource.code==0){
+          that.poiInfo=dataSource.data.poi_info;
+          //console.log(dataSource.data.poi_info);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }
 }
 </script>

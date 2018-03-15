@@ -3,8 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import Axios from 'vue-axios'
-import VueAxios from 'vue-axios'
+import axios from 'axios'
 
 Vue.config.productionTip = false;
 
@@ -16,8 +15,8 @@ import Seller from './components/seller/Seller'
 //安装 vue-router
 Vue.use(VueRouter);
 //如果在其他组件中使用axios命令，需要改写为Vue原型属性
-Vue.prototype.$axios=Axios;
-//Vue.use(VueAxios, axios);
+Vue.prototype.$axios=axios;
+
 
 //2、定义路由
 const routes=[
